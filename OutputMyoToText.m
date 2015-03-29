@@ -1,3 +1,4 @@
+%Written by Akiv Jhirad
 % first serial test with the Esduino
 
 s = serial('COM4');     %choose your COM port
