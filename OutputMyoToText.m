@@ -1,5 +1,5 @@
-%Written by Akiv Jhirad
-% first serial test with the Esduino
+% Written by Akiv Jhirad
+% For use with Matlab
 
 s = serial('COM4');     %choose your COM port
 set(s, 'Baudrate', 9600);   %sets the Baudrate to the same thing as your uC
