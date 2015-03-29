@@ -1,0 +1,54 @@
+//Written by Akiv Jhirad
+//For use with the EsduinoXtreme uC
+
+#include <hidef.h>      /* common defines and macros */
+#include "derivative.h"      /* derivative-specific definitions */
+#include "SCI.h"
+
+
+char string[20];
+unsigned short val1, val2, val3, val4, val5;  
+
+void msDelay(unsigned int);
+
+void OutCRLF(void){
+  SCI_OutChar(CR);
+  SCI_OutChar(LF);
+  PTJ ^= 0x20;          // toggle LED D2
+}
+
+void main(void) {
+  /* put your own code here */
+  
+
+  DDRJ |= 0x01;     // PortJ bit 0 is output to LED D2 on DIG13
+  SCI_Init(9600);
+  SCI_OutString("Let's Begin  "); OutCRLF();
+  
+  ATDDIEN = 0x001F;     // Configure PT1AD4-PT1AD0 (A4 to A0 on the Esduino) as digital inputs (as opposed to analog inputs)
+  PER1AD = 0x1F;        // Enable internal pull up resistors to avoid indeterminate state when not connected
+  DDR1AD = 0x00;        // Set all bits to inputs (A7-A0 on Esduino)
+  
+	EnableInterrupts;
+
+
+  for(;;) {
+    PTJ ^= 0x01;          // toggle LED
+    val1 = PTI1AD;        
+    SCI_OutUDec(val1);
+    
+    OutCRLF();    
+    
+    msDelay(2000); //100 ms delay
+    
+  } /* loop forever */
+  /* please make sure that you never leave main */
+}
+
+
+void msDelay(unsigned int time)
+{
+	unsigned int j,k;
+	for(j=0;j<time;j++)
+		for(k=0;k<40;k++);
+}
