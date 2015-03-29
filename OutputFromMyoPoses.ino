@@ -1,5 +1,5 @@
 //For Arduino to interface with Myo
-//Adopted from JakeChapeskie
+//Adopted from JakeChapeskie, off the Myo Marketplace API for Arduino
 
 #include <MyoController.h>
 #include <Servo.h>
