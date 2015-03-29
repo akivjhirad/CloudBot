@@ -1,4 +1,3 @@
-//Written by Akiv Jhirad
 //For Processing
 
 import processing.serial.*;
