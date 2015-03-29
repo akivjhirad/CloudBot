@@ -25,7 +25,7 @@ void draw() {
  if (mySwitch>0){
    /*The readData function can be found later in the code.
    This is the call to read a CSV file on the computer hard-drive. */
-   readData("C:/Users/Akiv/Documents/Hackathon/HackWestern/Output.txt");
+   readData("C:/Output.txt");
    
    /*The following switch prevents continuous reading of the text file, until
    we are ready to read the file again. */
